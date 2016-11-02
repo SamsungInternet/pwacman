@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="icon" href="i/icon.png">
+    <script src="j/e/aframe.js"></script>
+    <script src="j/e/aframe-bmfont-text-component.min.js"></script>
+    <script src="j/rotateAround.js"></script>
+    <script src="j/e/aframe-gamepad-controls.min.js"></script>
+    <script src="j/e/svrbutton_helper.js"></script>
+    <script src="j/e/svrbutton.js"></script>
+    <script src="j/e/aframe-physics-system.js"></script>
+    <script src="j/pwacman.js"></script>
+</head>
+<body onload="startPwacman()">
+    <a-scene physics="gravity:0; debug:true">
+        <a-assets>
+            <a-asset-item id="ghostv1" src="assets/ghostv1.obj"></a-asset-item>
+            <img id="splash" src="i/splashscreen.png" />
+            <img id="logo" src="i/logo.png" />
+        </a-assets>
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+        <a-sky color="#3d3d3d"></a-sky>
+        <a-image src="#splash" transparent="true" metalness="0.5" height="4" width="2" position="0 1.5 -3.5"></a-image>
+        <a-image src="#logo" transparent="true" height="1" width="1.6" position="0 2.5 -3"></a-image>
+        <a-svrbutton id="mybutton" position="0 1.2 -2.8" text="play" btntweaks="textoffset:-0.3;textscale:1 1 1" height="0.4" width="1" depth="0.1" ></a-svrbutton>
+
+        
+        <a-sphere id="pwacman" color="gold" radius="1" position="0 0 0" rotate-around="autorotate:false"></a-sphere>
+
+        <a-obj-model id="ghost1" src="#ghostv1" color="#00FCFF" position="0 5 0" scale="4 4 4" rotate-around="speed:-0.0055;selfrotate:true" static-body:"shape:box"></a-obj-model>
+        <a-obj-model id="ghost2" src="#ghostv1" color="#FF3100" position="0 2.5 0" scale="4 4 4" rotate-around="speed:0.002;selfrotate:true" static-body:"shape:box"></a-obj-model>
+        <a-obj-model id="ghost3" src="#ghostv1" color="#FFA1CD" position="0 -2.5 0" scale="4 4 4" rotate-around="speed:-0.003;selfrotate:true" static-body:"shape:box"></a-obj-model>
+        <a-obj-model id="ghost4" src="#ghostv1" color="#FFCC00" position="0 -5 0" scale="4 4 4" rotate-around="selfrotate:true;speed:0.0045" static-body:"shape:box"></a-obj-model>
+    </a-scene>
+</body>
+</html>
