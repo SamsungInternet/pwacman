@@ -36,6 +36,10 @@ function init(){
     configureInput();
     //get a global ref to pwacman
     _pwac = document.getElementById('pwacman');
+    //collisions with pwacman / testing purposes
+    _pwac.addEventListener('collide', function(e){
+        console.log('Collision detected ' + e.detail.body.el);
+    });
 }
 
 function createCrumbs(numberAppIcons, radius, looseAxisPos){
