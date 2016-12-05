@@ -81,3 +81,9 @@ function configureInput(){
 function startPwacman(){
     init();
 }
+
+function startGame(){
+    for (i = -5; i > 8; i=i+3){
+        createCrumbs(10,10,i);
+    }
+}
