@@ -1,0 +1,22 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "name": "PWAc-man: PWA VR demo",
+  "description": "360 image viewer from Samsung Internet",
+  "short_name": "PWAC-man",
+  "icons": [{
+    "src": "i/icons/icon192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "i/icons/icon512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#987FFF",
+  "background_color": "#3d3d3d"
+}
