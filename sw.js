@@ -1,14 +1,13 @@
 // Perform install steps
 var CACHE_NAME = 'pwacman-v1';
 var urlsToCache = [
-    '/pwacman',
     'j/pwacman.js',
     'j/rotateAround.js',
     'j/e/aframe.js',
     'j/e/aframe-bmfont-text-component.min.js',
     'j/e/aframe-physics-system.js',
     'j/e/svrbutton.js',
-    'j/e/svrbutton_helper',
+    'j/e/svrbutton_helper.js',
     'i/icons/icon192.png',
     'i/icons/icon512.png',
     'i/hud.png',
