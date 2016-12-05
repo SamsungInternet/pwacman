@@ -1,9 +1,9 @@
 {
   "lang": "en",
   "dir": "ltr",
-  "name": "PWAc-man: PWA VR demo",
+  "name": "PWAc-Man: PWA VR demo",
   "description": "360 image viewer from Samsung Internet",
-  "short_name": "PWAC-man",
+  "short_name": "PWAc-Man",
   "icons": [{
     "src": "i/icons/icon192.png",
     "sizes": "192x192",
