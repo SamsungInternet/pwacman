@@ -1,6 +1,8 @@
 var _pwacman = null;
 var _gamepads = null;
 var _pwac = null;
+var _lives = 3;
+var _score = 0;
 
 function gamepadaction(){
     if(_gamepads != null){
@@ -38,7 +40,14 @@ function init(){
     _pwac = document.getElementById('pwacman');
     //collisions with pwacman / testing purposes
     _pwac.addEventListener('collide', function(e){
-        console.log('Collision detected ' + e.detail.body.el);
+        console.log('Collision detected ' + e.detail.body.el.id);
+        if(_lives > 0){
+            _lives--;
+            console.log('lives: ' + _lives);
+        }else{
+            document.querySelector('#gameOver').emit('gameOverBanner');
+            console.log('Game Over');
+        }
     });
 }
 

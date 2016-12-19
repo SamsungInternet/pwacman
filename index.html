@@ -22,6 +22,7 @@
             <img id="splash" src="i/splashscreen.png" />
             <img id="logo" src="i/logo.png" />
             <img id="hud" src="i/hud.png" />
+            <img id="go" src="i/gameOver.png" />
         </a-assets>
         <a-camera>
             <a-cursor></a-cursor>
@@ -33,6 +34,10 @@
             <a-image src="#logo" transparent="true" height="1" width="1.45" position="0 2.5 -3"></a-image>
             <a-svrbutton id="mybutton" position="0 1.2 -2.8" text="play" btntweaks="textoffset:-0.3;textscale:1 1 1" height="0.4" width="1" depth="0.1" onclick="startGame()" ></a-svrbutton>
             <a-animation attribute="position" dur="10000" to="0 100 0" begin="goAway"></a-animation>
+        </a-entity>
+        <a-entity id="gameOver">
+            <a-image src="#go" transparent="true" height="1.2" width="3" position="0 -100 -3">
+            <a-animation attribute="position" dur="1000" to="0 2 -3" begin="gameOverBanner"></a-animation>
         </a-entity>
         
         <a-sphere id="pwacman" color="gold" radius="1" position="0 0 0" rotate-around="autorotate:false;speed:0.3" static-body></a-sphere>
