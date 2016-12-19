@@ -6,12 +6,14 @@ function deg2rad(d){
 
 AFRAME.registerComponent('rotate-around', {
     schema:{
-        speed: {type:'number', default:0.01},
+        speed: {type:'number', default:0.02},
         distance: {type:'number', default:10},
         currentAngle: {type:'number', default:0},
         autorotate:{type:'boolean', default:true},
         selfrotate:{type:'boolean', default:false},
-        rotatedirection:{type:'boolean', default:true}
+        rotatedirection:{type:'boolean', default:true},
+        limitposy:{type:'number', default:6},
+        limitnegy:{type:'number', default:-6},
     },
     init: function(){
         //this.el.setAttribute('position', 0 + ' ' + 0 + ' ' + this.data.distance);
@@ -28,10 +30,10 @@ AFRAME.registerComponent('rotate-around', {
                 data.currentAngle += data.speed;
                 break;
             case 'u':
-                py += .5;
+                py += 3;
                 break;
             case 'd':
-                py -= .5;
+                py -= 3;
                 break;
         }
         var px = data.distance*Math.cos(data.currentAngle%360);

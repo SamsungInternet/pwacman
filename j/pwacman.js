@@ -56,21 +56,20 @@ function createCrumbs(numberAppIcons, radius, looseAxisPos){
 }
     
 function configureInput(){
-    var pac = document.getElementById('pwacman');
     //adds support for arrow keys 
     window.addEventListener('keydown', function(e){
         switch (e.keyCode) {
             case 37: //left
-                pac.components['rotate-around'].move('l');
+                _pwac.components['rotate-around'].move('l');
                 break;
             case 38: //up
-                pac.components['rotate-around'].move('u');
+                _pwac.components['rotate-around'].move('u');
                 break;
             case 39: //rightytyu
-                pac.components['rotate-around'].move('r');
+                _pwac.components['rotate-around'].move('r');
                 break;
             case 40: //down
-                    pac.components['rotate-around'].move('d');
+                _pwac.components['rotate-around'].move('d');
                 break;
         }
     });
@@ -83,7 +82,12 @@ function startPwacman(){
 }
 
 function startGame(){
-    for (i = -5; i > 8; i=i+3){
-        createCrumbs(10,10,i);
+    //creates crumbs
+    for (j = -6; j < 10; j = j+3){
+        createCrumbs(10,10,j);
+        console.log(i);
     }
+    //positions pwacman to startGame
+    for(k = 0; k < 5; k++)
+        _pwac.components['rotate-around'].move('l');
 }
