@@ -88,6 +88,11 @@ function startGame(){
         console.log(i);
     }
     //positions pwacman to startGame
-    for(k = 0; k < 5; k++)
+    for(k = 0; k < 5; k++){
         _pwac.components['rotate-around'].move('l');
+    }
+
+    //triggers event to 
+    document.querySelector('#splashScreen').emit('goAway');
+
 }
