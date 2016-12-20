@@ -24,7 +24,6 @@ function gamepadaction(){
     window.requestAnimationFrame(gamepadaction);
 }
 
-
 function init(){
     //gamepad is connected
     window.addEventListener('gamepadconnected', function(e) {
@@ -52,13 +51,16 @@ function init(){
 
         if(isCollisionValid(_prevTimeStamp, _curTimeStamp, 1000)){
             _pwac.setAttribute('position', '0 0 0');
-            if(_lives > 0){
+            if(_lives >= 1){
                 _lives--;
+                document.querySelector('#lives').setAttribute('src', '#l'+_lives);
+                document.querySelector('#lostLife').emit('lostlifeMax');
+                document.querySelector('#lostLife').emit('lostlifeMin');
                 console.log('lives: ' + _lives);
             }else{
                 document.querySelector('#gameOver').emit('enterGo');
                 console.log('Game Over');
-                
+
             }
         }
     });
