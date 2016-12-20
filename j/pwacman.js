@@ -1,8 +1,9 @@
-var _pwacman = null;
 var _gamepads = null;
 var _pwac = null;
 var _lives = 3;
 var _score = 0;
+var _prevTimeStamp = 0;
+var _curTimeStamp = 0;
 
 function gamepadaction(){
     if(_gamepads != null){
@@ -40,15 +41,31 @@ function init(){
     _pwac = document.getElementById('pwacman');
     //collisions with pwacman / testing purposes
     _pwac.addEventListener('collide', function(e){
-        console.log('Collision detected ' + e.detail.body.el.id);
-        if(_lives > 0){
-            _lives--;
-            console.log('lives: ' + _lives);
-        }else{
-            document.querySelector('#gameOver').emit('gameOverBanner');
-            console.log('Game Over');
+
+        //console.log('Collision detected ' + e.detail.body.el.id + ' at ' + e.timeStamp);
+        if(_curTimeStamp == 0)
+            _curTimeStamp = e.timeStamp;
+        else{
+            _prevTimeStamp = _curTimeStamp;
+            _curTimeStamp = e.timeStamp;
+        }
+
+        if(isCollisionValid(_prevTimeStamp, _curTimeStamp, 1000)){
+            _pwac.setAttribute('position', '0 0 0');
+            if(_lives > 0){
+                _lives--;
+                console.log('lives: ' + _lives);
+            }else{
+                document.querySelector('#gameOver').emit('enterGo');
+                console.log('Game Over');
+                
+            }
         }
     });
+}
+
+function isCollisionValid(prevTimeStamp, curTimeStamp, threshold){
+    return (curTimeStamp-prevTimeStamp) > threshold;
 }
 
 function createCrumbs(numberAppIcons, radius, looseAxisPos){

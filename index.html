@@ -27,6 +27,10 @@
         <a-camera>
             <a-cursor></a-cursor>
             <a-image src="#hud" transparent="true" position="-1 1 -3" width=".6" height="0.2"></a-image>
+            <a-entity id="gameOver">
+                <a-image src="#go" transparent="true" height="1.2" width="3" position="0 0 0"></a-image>
+                <a-animation attribute="position" dur="1000" to="0 0 -3" begin="enterGo"></a-animation>
+            </a-entity>
         </a-camera>
         <a-sky color="#3d3d3d"></a-sky>
         <a-entity id="splashScreen">
@@ -35,12 +39,10 @@
             <a-svrbutton id="mybutton" position="0 1.2 -2.8" text="play" btntweaks="textoffset:-0.3;textscale:1 1 1" height="0.4" width="1" depth="0.1" onclick="startGame()" ></a-svrbutton>
             <a-animation attribute="position" dur="10000" to="0 100 0" begin="goAway"></a-animation>
         </a-entity>
-        <a-entity id="gameOver">
-            <a-image src="#go" transparent="true" height="1.2" width="3" position="0 -100 -3">
-            <a-animation attribute="position" dur="1000" to="0 2 -3" begin="gameOverBanner"></a-animation>
-        </a-entity>
         
-        <a-sphere id="pwacman" color="gold" radius="1" position="0 0 0" rotate-around="autorotate:false;speed:0.3" static-body></a-sphere>
+        <a-sphere id="pwacman" color="gold" radius="1" position="0 0 0" rotate-around="autorotate:false;speed:0.3" static-body>
+            <a-animation attribute="position" dur="1000" to="0 2 -3" begin="enterGo"></a-animation>
+        </a-sphere>
 
         <a-obj-model id="ghost1" src="#ghostv1" color="#00FCFF" position="0 6 0" rotate-around="selfrotate:true" dynamic-body="linearDamping:1;angularDamping:1;mass:0.1"></a-obj-model>
         <a-obj-model id="ghost2" src="#ghostv1" color="#FF3100" position="0 3 0" rotate-around="selfrotate:true;rotatedirection:false" dynamic-body="linearDamping:1;angularDamping:1;mass:0.1"></a-obj-model>
