@@ -100,7 +100,7 @@ function createCrumbs(numberAppIcons, radius, looseAxisPos){
         c.setAttribute('color', 'silver');
         c.setAttribute('radius', 0.1);
         c.setAttribute('id', 'c'+_crumbNum);
-        c.setAttribute('dynamic-body', 'shape:sphere;linearDamping:1');
+        //c.setAttribute('dynamic-body', 'shape:box;linearDamping:1;angularDamping:1;mass:0.1');
         _crumbNum++;
         var cpx = radius * Math.cos((360 / numberAppIcons)*i);
         var cpy = looseAxisPos;
