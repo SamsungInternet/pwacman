@@ -70,7 +70,7 @@ function sortGamepadConn(){
 //when you eat a crumb you score 10 points!
 function hitByCrumb(domCrumb){
     _score += 10;
-    document.getElementsByTagName('a-scene')[0].removeChild(domCrumb);
+    domCrumb.setAttribute('visible', 'false');
 }
 
 //When collides with ghost you loose a turn!
@@ -86,6 +86,8 @@ function hitByGhost(){
         document.querySelector('#gameOver').emit('enterGo');
         console.log('Game Over');
     }
+    //cleans invisible crumbs
+    var eatenCrumbs = document.querySelectorAll('[visible=false]');
 }
 
 //checks if collision is valid with timestamps to avoid triggering multiple times the same collision
@@ -100,7 +102,7 @@ function createCrumbs(numberAppIcons, radius, looseAxisPos){
         c.setAttribute('color', 'silver');
         c.setAttribute('radius', 0.1);
         c.setAttribute('id', 'c'+_crumbNum);
-        //c.setAttribute('dynamic-body', 'shape:box;linearDamping:1;angularDamping:1;mass:0.1');
+        c.setAttribute('dynamic-body', 'shape:box;linearDamping:1;angularDamping:1;mass:0.1');
         _crumbNum++;
         var cpx = radius * Math.cos((360 / numberAppIcons)*i);
         var cpy = looseAxisPos;
@@ -114,16 +116,16 @@ function configureInput(){
     //adds support for arrow keys 
     window.addEventListener('keydown', function(e){
         switch (e.keyCode) {
-            case 46: //left
+            case 37: //left
                 _pwac.components['rotate-around'].move('l');
                 break;
-            case 36: //up
+            case 38: //up
                 _pwac.components['rotate-around'].move('u');
                 break;
-            case 34: //right
+            case 39: //right
                 _pwac.components['rotate-around'].move('r');
                 break;
-            case 35: //down
+            case 40: //down
                 _pwac.components['rotate-around'].move('d');
                 break;
         }
