@@ -140,7 +140,7 @@ function startPwacman(){
 
 function startGame(){
     //creates crumbs
-    for (j = -6; j < 10; j = j+3){
+    for (j = -6; j < 7; j = j+3){
         createCrumbs(10,10,j);
     }
     //positions pwacman to startGame
