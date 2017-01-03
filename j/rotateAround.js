@@ -6,7 +6,7 @@ function deg2rad(d){
 
 AFRAME.registerComponent('rotate-around', {
     schema:{
-        speed: {type:'number', default:0.02},
+        speed: {type:'number', default:0.04},
         distance: {type:'number', default:10},
         currentAngle: {type:'number', default:0},
         autorotate:{type:'boolean', default:true},
@@ -30,10 +30,12 @@ AFRAME.registerComponent('rotate-around', {
                 data.currentAngle += data.speed;
                 break;
             case 'u':
-                py += 3;
+                if(py <= 3)
+                    py += 3;
                 break;
             case 'd':
-                py -= 3;
+                if(py >= -3)
+                    py -= 3;
                 break;
         }
         var px = data.distance*Math.cos(data.currentAngle%360);
