@@ -31,11 +31,11 @@ AFRAME.registerComponent('rotate-around', {
                 break;
             case 'u':
                 if(py <= 3)
-                    py += 3;
+                    py += data.speed*2;
                 break;
             case 'd':
                 if(py >= -3)
-                    py -= 3;
+                    py -= data.speed*2;
                 break;
         }
         var px = data.distance*Math.cos(data.currentAngle%360);

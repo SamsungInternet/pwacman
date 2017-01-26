@@ -4,9 +4,26 @@ var _lives = 3;
 var _score = 0;
 var _prevTimeStamp = 0;
 var _curTimeStamp = 0;
-var _prevTimeStampMove = 0;
-var _curTimeStampMove = 0;
 var _crumbNum = 0;
+
+function gamepadaction(){
+    if(_gamepads != null){
+        var gp = _gamepads[0];
+        if(gp.axes[0] < -0.7){
+            _pwac.components['rotate-around'].move('l');
+        }
+        if(gp.axes[0] > 0.7){
+            _pwac.components['rotate-around'].move('r');
+        }
+        if(gp.axes[1] < -0.7){
+            _pwac.components['rotate-around'].move('u');
+        }
+        if(gp.axes[1] > 0.7){
+            _pwac.components['rotate-around'].move('d');
+        }
+    }
+    window.requestAnimationFrame(gamepadaction);
+}
 
 function init(){
     sortGamepadConn();
@@ -23,7 +40,7 @@ function init(){
             _prevTimeStamp = _curTimeStamp;
             _curTimeStamp = e.timeStamp;
         }
-        if(isTimeStampValid(_prevTimeStamp, _curTimeStamp, 1000)){
+        if(isCollisionValid(_prevTimeStamp, _curTimeStamp, 1000)){
             //checks for type of collision: crumb or ghost
             switch(e.detail.body.el.nodeName){
                 case 'A-OBJ-MODEL':
@@ -50,37 +67,6 @@ function sortGamepadConn(){
     });
 }
 
-function gamepadaction(){
-    if(_gamepads != null){
-        var gp = _gamepads[0];
-        if(_curTimeStampMove == 0)
-            _curTimeStampMove = Date.now();
-        else{
-            _prevTimeStampMove = _curTimeStampMove;
-            _curTimeStampMove = Date.now();
-        }
-        if(isTimeStampValid(_prevTimeStampMove, _curTimeStampMove, 650)){
-            if(gp.axes[0] < -0.7){
-                _pwac.components['rotate-around'].move('l');
-            }
-            if(gp.axes[0] > 0.7){
-                _pwac.components['rotate-around'].move('r');
-            }
-            if(gp.axes[1] < -0.7){
-                _pwac.components['rotate-around'].move('u');
-            }
-            if(gp.axes[1] > 0.7){
-                _pwac.components['rotate-around'].move('d');
-            }
-        }
-        else{
-
-        }
-        
-    }
-    window.requestAnimationFrame(gamepadaction);
-}
-
 //when you eat a crumb you score 10 points!
 function hitByCrumb(domCrumb){
     _score += 10;
@@ -105,7 +91,7 @@ function hitByGhost(){
 }
 
 //checks if collision is valid with timestamps to avoid triggering multiple times the same collision
-function isTimeStampValid(prevTimeStamp, curTimeStamp, threshold){
+function isCollisionValid(prevTimeStamp, curTimeStamp, threshold){
     return (curTimeStamp-prevTimeStamp) > threshold;
 }
 
