@@ -59,7 +59,7 @@ function gamepadaction(){
             _prevTimeStampMove = _curTimeStampMove;
             _curTimeStampMove = Date.now();
         }
-        if(isTimeStampValid(_curTimeStampMove, _prevTimeStampMove, 500)){
+        if(isTimeStampValid(_curTimeStampMove, _prevTimeStampMove, 650)){
             if(gp.axes[0] < -0.7){
                 _pwac.components['rotate-around'].move('l');
             }
