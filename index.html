@@ -27,6 +27,7 @@
             <img id="l0" src="i/lives0.png" />
             <img id="go" src="i/gameOver.png" />
             <img id="ll" src="i/lostLife.png" />
+            <img id="bg" src="i/around.jpg" />
         </a-assets>
         <a-camera wasd-controls="enabled:false">
             <a-cursor></a-cursor>
@@ -41,7 +42,7 @@
                 <a-animation attribute="position" dur="1000" from="0 0 -3" to="0 0 0" delay="3000" begin="lostlifeMin"></a-animation>
             </a-entity>
         </a-camera>
-        <a-sky color="#3d3d3d"></a-sky>
+        <a-sky color="#ffffff" src="#bg"></a-sky>
         <a-entity id="splashScreen">
             <a-image src="#splash" id="spGame" transparent="true" metalness="0.5" height="4" width="2" position="0 1.5 -3.5"></a-image>
             <a-image src="#logo" transparent="true" height="1" width="1.45" position="0 2.5 -3"></a-image>
